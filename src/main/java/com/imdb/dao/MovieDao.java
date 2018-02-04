@@ -8,6 +8,8 @@ import com.imdb.web.dto.MovieListDTO;
 public interface MovieDao {
 
 	List<Movie> getAll();
+	
+	List<Movie> getRecommended();
 
 	List<Movie> getByName(String name);
 

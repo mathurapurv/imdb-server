@@ -40,6 +40,16 @@ public class MovieDaoImpl implements MovieDao {
 	
 	@Override
 	@Transactional
+	public List<Movie> getRecommended(){
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "FROM Movie";
+		Query query = session.createQuery(hql).setMaxResults(6);
+		List<Movie> moviesList = query.list();
+		return moviesList;
+	}
+	
+	@Override
+	@Transactional
 	public Movie get(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Movie m = (Movie)session.load(Movie.class, id);

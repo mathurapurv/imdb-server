@@ -41,6 +41,13 @@ public class UserServiceController {
 		return movieToMovieDTOMapper.mapMultiple(movieDao.getAll()) ; 
 	} 
 	
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/listRecommendedMovies")
+	public List<MovieListDTO> listRecommendedMovies() {
+		return movieToMovieDTOMapper.mapMultiple(movieDao.getRecommended()) ; 
+	} 
+	
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/movieById/{movieId}")
 	public MovieListDTO movieById( @PathVariable(name="movieId") Long movieId) {
 		return movieToMovieDTOMapper.map(movieDao.get(movieId)) ; 
